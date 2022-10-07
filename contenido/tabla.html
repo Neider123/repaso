@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <title>Tabla</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Consumo de datos</h1>
+        <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Descripcion</th>
+                <th scope="col">formato</th>
+                <th scope="col">idioma</th>
+              </tr>
+            </thead>
+          </table>
+    </div>
+    <div class="contenedor">
+        <button type="button" class="btn btn-primary">Boton</button>
+    </div>
+
+    <script type="text/javascript">
+        
+        function getData(){
+        fetch('https://www.datos.gov.co/resource/mkbs-2sv5.json')
+        .then((response) => response.json())
+        .then((data) => fillTable(data));
+        }
+
+        var boton = document.querySelector("button");
+
+        boton.onclick = function (){
+            getData();
+        }
+
+        function fillTable(data){
+           var table = document.querySelector("table");
+           for(let json in data){
+            let object = data[json];
+            let nombre_documento =object.nombre_documento;
+            let descripcion_del_contenido = object.descripcion_del_contenido;
+            let formato = object.formato;
+            let idioma = object.idioma;
+
+            let row = table.insertRow();
+            
+            let cell_index = row.insertCell();
+            cell_index.innerHTML = json ;
+
+            let cell_nombre_documento = row.insertCell();
+            cell_nombre_documento.innerHTML = nombre_documento;
+
+            let cell_descripcion_del_contenido = row.insertCell();
+            cell_descripcion_del_contenido.innerHTML = descripcion_del_contenido;
+
+            let cell_formato = row.insertCell();
+            cell_formato.innerHTML = formato;
+            
+            let cell_idioma = row.insertCell();
+            cell_idioma.innerHTML = idioma;
+           }
+        }
+
+    </script>
+</body>
+</html>

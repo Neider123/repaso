@@ -1,0 +1,45 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+body  {
+    align-items: center;
+    justify-content: center;
+}
+
+form{
+    background: #fff;
+    padding: 40px 0px;
+    border-radius: 10px;
+}
+
+.form{
+    width: 100%;
+    margin: auto;
+
+}
+
+form .grupo{
+    position: relative;
+    margin: 45px;
+
+}
+
+input{
+    background: none;
+    color: #c6c6c6;
+    font-size: 17px;
+    padding: 10px 10px 10px 5px;
+    display: block;
+    width: 100%;
+    border: none;
+    border-bottom: 1px solid;
+}
+
+
+button{
+    cursor: pointer;
+}
